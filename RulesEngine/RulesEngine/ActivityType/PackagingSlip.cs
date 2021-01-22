@@ -8,7 +8,7 @@ namespace RulesEngine.ActivityType
 {
     public class PackagingSlip:IActivity
     {
-        public Guid ActivityTypeId { get; } = Constants.PackagingSlip;
+        public Guid ActivityTypeId { get; } = ActivityConstants.PackagingSlip;
         public string ActivityTypeName { get; } = "Generate_Packaging_Slip";
         public Guid ProcessActivity(IOrder order)
         {

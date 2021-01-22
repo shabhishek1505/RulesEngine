@@ -8,7 +8,7 @@ namespace RulesEngine.ActivityType
 {
     class ActivateMembership : IActivity
     {
-        public Guid ActivityTypeId { get; } = Constants.ActivateMembership;
+        public Guid ActivityTypeId { get; } = ActivityConstants.ActivateMembership;
         public string ActivityTypeName { get; } = "Activate_Membership";
         public Guid ProcessActivity(IOrder order)
         {

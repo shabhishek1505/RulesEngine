@@ -10,24 +10,23 @@ namespace RulesEngine.RuleEngine
 {
     public class RuleEngine
     {
-        private List<IRule<IOrder>> _rules;
+        private readonly Dictionary<Guid, IRule<IOrder>> _rules;
 
-        public RuleEngine(List<IRule<IOrder>> rules = null)
+        public RuleEngine(Dictionary<Guid, IRule<IOrder>> rules = null)
         {
-            _rules = rules ?? new List<IRule<IOrder>>();
+            _rules = rules ?? new Dictionary<Guid, IRule<IOrder>>();
         }
 
-        public void AddRule(IRule<IOrder> rule)
+        public void AddRule(IRule<IOrder> rule, Guid orderType)
         {
-            _rules.Add(rule);
+            _rules.Add(orderType, rule);
         }
 
         public Guid ProcessOrder(IOrder order)
         {
             //filters the fitting rule, and processes that rule for that order.
 
-            var rule = _rules.FirstOrDefault(x => x.OrderType.OrderTypeId == order.OrderTypeId);
-
+            var rule = _rules[order.OrderTypeId];
             return rule?.ExecuteTask() ?? Guid.Empty;
         }
     }

@@ -15,21 +15,21 @@ namespace RuleEngineNTest
         public void Setup()
         {
             _ruleEngine = new RuleEngine();
-            _ruleEngine.AddRule(new MembershipPaymentRule() { OrderType = new MembershipPayment() });
-            _ruleEngine.AddRule(new ProductPaymentRule() { OrderType = new ProductPayment() });
+            _ruleEngine.AddRule(new MembershipPaymentRule() { OrderType = new MembershipPayment() }, OrderConstants.MembershipPayment);
+            _ruleEngine.AddRule(new ProductPaymentRule() { OrderType = new ProductPayment() }, OrderConstants.ProductPayment);
         }
 
         [Test]
         public void Test_MembershipPayment()
         {
             var order = new MembershipPayment { OrderId = Guid.NewGuid() };
-            Assert.AreEqual(_ruleEngine.ProcessOrder(order), RulesEngine.Constant.ActivityConstants.ActivateMembership);
+            Assert.AreEqual(_ruleEngine.ProcessOrder(order), ActivityConstants.ActivateMembership);
         }
         [Test]
         public void Test_ProductPayment()
         {
             var order = new ProductPayment { OrderId = Guid.NewGuid() };
-            Assert.AreEqual(_ruleEngine.ProcessOrder(order), RulesEngine.Constant.ActivityConstants.PackagingSlip);
+            Assert.AreEqual(_ruleEngine.ProcessOrder(order), ActivityConstants.PackagingSlip);
         }
     }
 }

@@ -22,13 +22,13 @@ namespace RulesEngine.RuleEngine
             _rules.Add(rule);
         }
 
-        public bool ProcessOrder(IOrder order)
+        public Guid ProcessOrder(IOrder order)
         {
             //filters the fitting rule, and processes that rule for that order.
 
             var rule = _rules.FirstOrDefault(x => x.OrderType.OrderTypeId == order.OrderTypeId);
 
-            return rule?.ExecuteTask() ?? false;
+            return rule?.ExecuteTask() ?? Guid.Empty;
         }
     }
 }

@@ -1,8 +1,10 @@
 using System;
+using Microsoft.VisualBasic;
 using NUnit.Framework;
 using RulesEngine.OrderType;
 using RulesEngine.RuleEngine;
 using RulesEngine.Rules;
+using RulesEngine.Constant;
 
 namespace RuleEngineNTest
 {
@@ -18,11 +20,18 @@ namespace RuleEngineNTest
         }
 
         [Test]
-        public void Test1()
+        public void Test_MembershipPayment()
         {
             var order = new MembershipPayment();
             order.OrderId = Guid.NewGuid();
-            Assert.IsTrue(_ruleEngine.ProcessOrder(order));
+            Assert.AreEqual(_ruleEngine.ProcessOrder(order), RulesEngine.Constant.Constants.ActivateMembership);
+        }
+        [Test]
+        public void Test_ProductPayment()
+        {
+            var order = new ProductPayment();
+            order.OrderId = Guid.NewGuid();
+            Assert.AreEqual(_ruleEngine.ProcessOrder(order), RulesEngine.Constant.Constants.PackagingSlip);
         }
     }
 }

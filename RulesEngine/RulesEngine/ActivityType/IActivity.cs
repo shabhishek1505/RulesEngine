@@ -10,6 +10,6 @@ namespace RulesEngine.ActivityType
     {
         public Guid ActivityTypeId { get;}
         public string ActivityTypeName { get;}
-        public bool ProcessActivity(IOrder order);
+        public Guid ProcessActivity(IOrder order);
     }
 }

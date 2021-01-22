@@ -10,7 +10,7 @@ namespace RulesEngine.Rules
     {
         public IOrder OrderType { get; set; }
 
-        public bool ExecuteTask()
+        public Guid ExecuteTask()
         {
             //chain multiple activity if you want.
             var activity = new ActivateMembership();

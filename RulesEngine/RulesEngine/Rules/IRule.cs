@@ -6,9 +6,9 @@ using RulesEngine.OrderType;
 
 namespace RulesEngine.Rules
 {
-    public interface IRule
+    public interface IRule<TO> where TO : IOrder
     {
-        public IOrder OrderType { get; set; }
+        public TO OrderType { get; set; }
         public void ExecuteTask();
     }
 }

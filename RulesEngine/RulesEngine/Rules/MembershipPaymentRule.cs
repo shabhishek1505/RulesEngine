@@ -6,14 +6,15 @@ using RulesEngine.OrderType;
 
 namespace RulesEngine.Rules
 {
-    class MembershipPaymentRule : IRule<MembershipPayment>
+    public class MembershipPaymentRule : IRule<IOrder>
     {
-        public MembershipPayment OrderType { get; set; }
-        public void ExecuteTask()
+        public IOrder OrderType { get; set; }
+
+        public bool ExecuteTask()
         {
             //chain multiple activity if you want.
             var activity = new ActivateMembership();
-            activity.ProcessActivity(OrderType);
+            return activity.ProcessActivity(OrderType);
         }
     }
 }

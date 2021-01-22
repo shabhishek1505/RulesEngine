@@ -9,9 +9,9 @@ namespace RulesEngine.ActivityType
     {
         public Guid ActivityTypeId { get; } = Guid.Parse("2ed794f8-23a7-493f-975d-792d98c3de60");
         public string ActivityTypeName { get; } = "Generate_Packaging_Slip";
-        public void ProcessActivity(IOrder order)
+        public bool ProcessActivity(IOrder order)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

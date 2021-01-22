@@ -6,15 +6,14 @@ using RulesEngine.OrderType;
 
 namespace RulesEngine.Rules
 {
-    class ProductPaymentRule : IRule<ProductPayment>
+    public class ProductPaymentRule : IRule<IOrder>
     {
-        public ProductPayment OrderType { get; set; }
-
-        public void ExecuteTask()
+        public IOrder OrderType { get; set; }
+        public bool ExecuteTask()
         {
             //chain multiple activity if you want.
             var activity = new PackagingSlip();
-            activity.ProcessActivity(OrderType);
+            return activity.ProcessActivity(OrderType);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace RulesEngine.RuleEngine
     public class RuleEngine
     {
         private List<IRule<IOrder>> _rules;
+
         public RuleEngine(List<IRule<IOrder>> rules = null)
         {
             _rules = rules ?? new List<IRule<IOrder>>();
@@ -21,13 +22,13 @@ namespace RulesEngine.RuleEngine
             _rules.Add(rule);
         }
 
-        public void ProcessOrder(IOrder order)
+        public bool ProcessOrder(IOrder order)
         {
             //filters the fitting rule, and processes that rule for that order.
 
             var rule = _rules.FirstOrDefault(x => x.OrderType.OrderTypeId == order.OrderTypeId);
 
-            rule?.ExecuteTask();
+            return rule?.ExecuteTask() ?? false;
         }
     }
 }

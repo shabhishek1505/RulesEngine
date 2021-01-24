@@ -17,17 +17,17 @@ namespace RulesEngine.RuleEngine
             _rules = rules ?? new Dictionary<Guid, IRule<IOrder>>();
         }
 
-        public void AddRule(IRule<IOrder> rule, Guid orderType)
+        public void AddRule(Guid orderType, IRule<IOrder> rule)
         {
             _rules.Add(orderType, rule);
         }
 
-        public Guid ProcessOrder(IOrder order)
+        public List<Guid> ProcessOrder(IOrder order)
         {
             //filters the fitting rule, and processes that rule for that order.
 
             var rule = _rules[order.OrderTypeId];
-            return rule?.ExecuteTask() ?? Guid.Empty;
+            return rule?.ExecuteTask() ?? new List<Guid>();
         }
     }
 }

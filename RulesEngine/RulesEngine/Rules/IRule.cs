@@ -9,6 +9,6 @@ namespace RulesEngine.Rules
     public interface IRule<TO> where TO : IOrder
     {
         public TO OrderType { get; set; }
-        public Guid ExecuteTask();
+        public List<Guid> ExecuteTask();
     }
 }

@@ -1,13 +1,13 @@
+E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.AssemblyInfoInputs.cache
+E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.AssemblyInfo.cs
+E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.csproj.CoreCompileInputs.cache
+E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.csprojAssemblyReference.cache
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\bin\Debug\netcoreapp3.1\RulesEngine.exe
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\bin\Debug\netcoreapp3.1\RulesEngine.deps.json
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\bin\Debug\netcoreapp3.1\RulesEngine.runtimeconfig.json
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\bin\Debug\netcoreapp3.1\RulesEngine.runtimeconfig.dev.json
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\bin\Debug\netcoreapp3.1\RulesEngine.dll
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\bin\Debug\netcoreapp3.1\RulesEngine.pdb
-E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.csprojAssemblyReference.cache
-E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.AssemblyInfoInputs.cache
-E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.AssemblyInfo.cs
-E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.csproj.CoreCompileInputs.cache
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.dll
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.pdb
 E:\Practice\RulesEngine\RulesEngine\RulesEngine\obj\Debug\netcoreapp3.1\RulesEngine.genruntimeconfig.cache

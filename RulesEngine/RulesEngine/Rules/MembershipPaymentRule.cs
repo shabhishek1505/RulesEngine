@@ -7,31 +7,28 @@ using RulesEngine.OrderType;
 
 namespace RulesEngine.Rules
 {
-    public class MembershipPaymentRule : IRule<IOrder>
+    public class MembershipPaymentRule : IRuleOrder<IOrder>
     {
         public IOrder OrderType { get; set; }
 
-        public List<Guid> ExecuteTask()
+        public List<Guid> ExecuteTask(IOrder order)
         {
             var result = new List<Guid>();
+            var sendEmail = new SendEmail();
             //chain multiple activity if you want.
-            if (OrderType.OrderTypeId == OrderConstants.MembershipPayment)
+            if (order.OrderTypeId == OrderConstants.MembershipPayment)
             {
                 var activity = new ActivateMembership();
-                var activity2 = new SendEmail();
-
-                result.Add(activity2.ProcessActivity(OrderType));
-                result.Add(activity.ProcessActivity(OrderType));
+                result.Add(activity.ProcessActivity(order));
             }
-            else if (OrderType.OrderTypeId == OrderConstants.MembershipUpgrade)
+            else if (order.OrderTypeId == OrderConstants.MembershipUpgrade)
             {
                 var activity = new UpgradeMembership();
-                var activity2 = new SendEmail();
-
-                result.Add(activity2.ProcessActivity(OrderType));
-                result.Add(activity.ProcessActivity(OrderType));
+                result.Add(activity.ProcessActivity(order));
             }
+            result.Add(sendEmail.ProcessActivity(order));
             return result;
         }
+
     }
 }

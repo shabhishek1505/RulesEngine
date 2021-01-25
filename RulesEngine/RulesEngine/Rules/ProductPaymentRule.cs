@@ -4,30 +4,29 @@ using System.Text;
 using RulesEngine.ActivityType;
 using RulesEngine.Constant;
 using RulesEngine.OrderType;
+using RulesEngine.RuleEngine;
+using RulesEngine.Rules.Product;
 
 namespace RulesEngine.Rules
 {
-    public class ProductPaymentRule : IRule<IOrder>
+    public class ProductPaymentRule : IRuleOrder<IOrder>
     {
+        private readonly RuleEngine<IRuleProduct> _ruleEngine;
+
+        public ProductPaymentRule()
+        {
+            _ruleEngine = new RuleEngine<IRuleProduct>();
+            _ruleEngine.AddRule(OrderConstants.BookPayment, new BookPaymentRule());
+            _ruleEngine.AddRule(OrderConstants.VideoPayment, new VideoPaymentRule());
+        }
         public IOrder OrderType { get; set; }
-        public List<Guid> ExecuteTask()
+        public List<Guid> ExecuteTask(IOrder order)
         {
             var result = new List<Guid>();
-            //chain multiple activity if you want.
-            if (OrderType.OrderTypeId == OrderConstants.BookPayment)
-            {
-                var activity = new PackagingSlip();
-                var activity2 = new CommissionAgent();
-                result.Add(activity2.ProcessActivity(OrderType));
-                result.Add(activity.ProcessActivity(OrderType));
-            }
-            else if (OrderType.OrderTypeId == OrderConstants.VideoPayment)
-            {
-                var activity = new PackagingSlip();
-                result.Add(activity.ProcessActivity(OrderType));
-            }
+            result.AddRange(_ruleEngine.ProcessOrder(order));
             return result;
 
         }
+
     }
 }

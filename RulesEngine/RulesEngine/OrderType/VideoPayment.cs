@@ -10,6 +10,7 @@ namespace RulesEngine.OrderType
     {
         public Guid OrderId { get; set; }
         public Guid OrderTypeId { get; } = OrderConstants.VideoPayment;
+        public Guid VideoGuid { get; set; }
         public string OrderTypeName { get; } = "Video_Payment";
     }
 }

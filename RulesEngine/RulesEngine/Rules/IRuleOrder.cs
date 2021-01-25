@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 using RulesEngine.OrderType;
 
 namespace RulesEngine.Rules
 {
-    public interface IRule
+    public interface IRuleOrder<TO> : IRule where TO : IOrder
     {
-        public List<Guid> ExecuteTask(IOrder order);
+        public IOrder OrderType { get; set; }
     }
 }

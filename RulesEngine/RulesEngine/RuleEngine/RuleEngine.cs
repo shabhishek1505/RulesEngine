@@ -8,16 +8,16 @@ using RulesEngine.Rules;
 
 namespace RulesEngine.RuleEngine
 {
-    public class RuleEngine
+    public class RuleEngine<T> where T : IRule
     {
-        private readonly Dictionary<Guid, IRule<IOrder>> _rules;
+        private readonly Dictionary<Guid, T> _rules;
 
-        public RuleEngine(Dictionary<Guid, IRule<IOrder>> rules = null)
+        public RuleEngine(Dictionary<Guid, T> rules = null)
         {
-            _rules = rules ?? new Dictionary<Guid, IRule<IOrder>>();
+            _rules = rules ?? new Dictionary<Guid, T>();
         }
 
-        public void AddRule(Guid orderType, IRule<IOrder> rule)
+        public void AddRule(Guid orderType, T rule)
         {
             _rules.Add(orderType, rule);
         }
@@ -27,7 +27,7 @@ namespace RulesEngine.RuleEngine
             //filters the fitting rule, and processes that rule for that order.
 
             var rule = _rules[order.OrderTypeId];
-            return rule?.ExecuteTask() ?? new List<Guid>();
+            return rule?.ExecuteTask(order) ?? new List<Guid>();
         }
     }
 }

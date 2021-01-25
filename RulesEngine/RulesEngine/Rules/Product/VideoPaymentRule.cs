@@ -14,6 +14,7 @@ namespace RulesEngine.Rules.Product
 
         public VideoPaymentRule()
         {
+            //rules should be injected and formed during startup
             _ruleEngine = new RuleEngine<List<Guid>>();
             _ruleEngine.AddRule(VideoConstants.LearningToSki, new List<Guid>() { VideoConstants.LearningToSki, VideoConstants.FirstAid });
         }

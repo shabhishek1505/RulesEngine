@@ -15,6 +15,7 @@ namespace RulesEngine.Rules
 
         public ProductPaymentRule()
         {
+            //rules should be injected and formed during startup
             _ruleEngine = new RuleEngine<IRuleProduct>();
             _ruleEngine.AddRule(OrderConstants.BookPayment, new BookPaymentRule());
             _ruleEngine.AddRule(OrderConstants.VideoPayment, new VideoPaymentRule());

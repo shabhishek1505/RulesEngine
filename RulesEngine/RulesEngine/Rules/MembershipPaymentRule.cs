@@ -15,7 +15,7 @@ namespace RulesEngine.Rules
         {
             var result = new List<Guid>();
             var sendEmail = new SendEmail();
-            //chain multiple activity if you want.
+            //chain multiple activity if you want. No need to add rule if not much of cyclomatic complexity
             if (order.OrderTypeId == OrderConstants.MembershipPayment)
             {
                 var activity = new ActivateMembership();

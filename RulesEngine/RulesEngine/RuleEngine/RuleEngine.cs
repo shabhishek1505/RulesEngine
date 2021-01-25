@@ -22,11 +22,11 @@ namespace RulesEngine.RuleEngine
             _rules.Add(orderType, rule);
         }
 
-        public T ProcessOrder(Guid order)
+        public T ProcessOrder(Guid id)
         {
             //filters the fitting rule, and processes that rule for that order.
 
-            var rule = _rules[order];
+            var rule = _rules[id];
             return rule;
         }
     }

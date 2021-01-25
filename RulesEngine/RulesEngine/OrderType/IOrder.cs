@@ -6,8 +6,9 @@ namespace RulesEngine.OrderType
 {
     public interface IOrder
     {
-        public Guid OrderId { get; set; }
+        public Guid Id { get; set; }
         public Guid OrderTypeId { get; }
         public string OrderTypeName { get; }
+        public Guid ProductId { get; set; }
     }
 }

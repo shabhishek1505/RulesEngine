@@ -8,7 +8,7 @@ using RulesEngine.Rules;
 
 namespace RulesEngine.RuleEngine
 {
-    public class RuleEngine<T> where T : IRule
+    public class RuleEngine<T>
     {
         private readonly Dictionary<Guid, T> _rules;
 
@@ -22,12 +22,12 @@ namespace RulesEngine.RuleEngine
             _rules.Add(orderType, rule);
         }
 
-        public List<Guid> ProcessOrder(IOrder order)
+        public T ProcessOrder(Guid order)
         {
             //filters the fitting rule, and processes that rule for that order.
 
-            var rule = _rules[order.OrderTypeId];
-            return rule?.ExecuteTask(order) ?? new List<Guid>();
+            var rule = _rules[order];
+            return rule;
         }
     }
 }

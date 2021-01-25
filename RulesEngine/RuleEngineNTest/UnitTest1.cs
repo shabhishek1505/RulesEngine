@@ -25,24 +25,27 @@ namespace RuleEngineNTest
         [Test]
         public void Test_MembershipPayment()
         {
-            var order = new MembershipPayment { OrderId = Guid.NewGuid() };
-            var result = _ruleEngineOrder.ProcessOrder(order);
+            var order = new MembershipPayment { Id = Guid.NewGuid() };
+            var task = _ruleEngineOrder.ProcessOrder(order.OrderTypeId);
+            var result = task.ExecuteTask(order);
             Assert.Contains(ActivityConstants.ActivateMembership, result);
             Assert.Contains(ActivityConstants.SendEmail, result);
         }
         [Test]
         public void Test_MembershipUpgrade()
         {
-            var order = new MembershipUpgrade() { OrderId = Guid.NewGuid() };
-            var result = _ruleEngineOrder.ProcessOrder(order);
+            var order = new MembershipUpgrade() { Id = Guid.NewGuid() };
+            var task = _ruleEngineOrder.ProcessOrder(order.OrderTypeId);
+            var result = task.ExecuteTask(order);
             Assert.Contains(ActivityConstants.UpgradeMembership, result);
             Assert.Contains(ActivityConstants.SendEmail, result);
         }
         [Test]
         public void Test_BookPayment()
         {
-            var order = new BookPayment() { OrderId = Guid.NewGuid() };
-            var result = _ruleEngineOrder.ProcessOrder(order);
+            var order = new BookPayment() { Id = Guid.NewGuid() };
+            var task = _ruleEngineOrder.ProcessOrder(order.OrderTypeId);
+            var result = task.ExecuteTask(order);
             Assert.Contains(ActivityConstants.PackagingSlip, result);
             Assert.Contains(ActivityConstants.CommissionAgent, result);
         }
@@ -50,9 +53,11 @@ namespace RuleEngineNTest
         public void Test_VideoPayment()
         {
             var order = new VideoPayment()
-            { OrderId = Guid.NewGuid(), VideoGuid = VideoConstants.LearningToSki };
-            var result = _ruleEngineOrder.ProcessOrder(order);
-            Assert.Contains(ActivityConstants.PackagingSlip, result);
+            { Id = Guid.NewGuid(), ProductId = VideoConstants.LearningToSki };
+            var task = _ruleEngineOrder.ProcessOrder(order.OrderTypeId);
+            var result = task.ExecuteTask(order);
+            Assert.Contains(VideoConstants.LearningToSki, result);
+            Assert.Contains(VideoConstants.FirstAid, result);
         }
     }
 }

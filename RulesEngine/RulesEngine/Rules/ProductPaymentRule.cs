@@ -23,7 +23,8 @@ namespace RulesEngine.Rules
         public List<Guid> ExecuteTask(IOrder order)
         {
             var result = new List<Guid>();
-            result.AddRange(_ruleEngine.ProcessOrder(order));
+            var task=_ruleEngine.ProcessOrder(order.OrderTypeId);
+            result.AddRange(task.ExecuteTask(order));
             return result;
 
         }

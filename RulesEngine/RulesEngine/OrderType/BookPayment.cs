@@ -7,8 +7,9 @@ namespace RulesEngine.OrderType
 {
     public class BookPayment:IOrder
     {
-        public Guid OrderId { get; set; }
+        public Guid Id { get; set; }
         public Guid OrderTypeId { get; } = OrderConstants.BookPayment;
         public string OrderTypeName { get; } = "Book_Payment";
+        public Guid ProductId { get; set; }
     }
 }

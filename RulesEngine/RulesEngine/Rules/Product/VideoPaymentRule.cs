@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 using RulesEngine.ActivityType;
+using RulesEngine.Constant;
 using RulesEngine.OrderType;
+using RulesEngine.RuleEngine;
 
 namespace RulesEngine.Rules.Product
 {
-    public class VideoPaymentRule:IRuleProduct
+    public class VideoPaymentRule : IRuleProduct
     {
+        private readonly RuleEngine<List<Guid>> _ruleEngine;
+
+        public VideoPaymentRule()
+        {
+            _ruleEngine = new RuleEngine<List<Guid>>();
+            _ruleEngine.AddRule(VideoConstants.LearningToSki, new List<Guid>() { VideoConstants.LearningToSki, VideoConstants.FirstAid });
+        }
         public List<Guid> ExecuteTask(IOrder order)
         {
-            var result = new List<Guid>();
-            var activity = new PackagingSlip();
-            result.Add(activity.ProcessActivity(order));
-            return result;
+            var videos = _ruleEngine.ProcessOrder(order.ProductId);
+            return videos;
         }
     }
 }

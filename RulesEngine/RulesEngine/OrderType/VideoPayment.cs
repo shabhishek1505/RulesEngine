@@ -8,9 +8,9 @@ namespace RulesEngine.OrderType
 {
     public class VideoPayment : IOrder
     {
-        public Guid OrderId { get; set; }
+        public Guid Id { get; set; }
         public Guid OrderTypeId { get; } = OrderConstants.VideoPayment;
-        public Guid VideoGuid { get; set; }
         public string OrderTypeName { get; } = "Video_Payment";
+        public Guid ProductId { get; set; }
     }
 }

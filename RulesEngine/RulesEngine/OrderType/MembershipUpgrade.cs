@@ -7,8 +7,9 @@ namespace RulesEngine.OrderType
 {
     public class MembershipUpgrade : IOrder
     {
-        public Guid OrderId { get; set; }
+        public Guid Id { get; set; }
         public Guid OrderTypeId { get; } = OrderConstants.MembershipUpgrade;
         public string OrderTypeName { get; } = "Membership_Upgrade";
+        public Guid ProductId { get; set; }
     }
 }

@@ -7,8 +7,10 @@ namespace RulesEngine.OrderType
 {
     public class MembershipPayment : IOrder
     {
-        public Guid OrderId { get; set; }
+        private IOrder _orderImplementation;
+        public Guid Id { get; set; }
         public Guid OrderTypeId { get; } = OrderConstants.MembershipPayment;
         public string OrderTypeName { get; } = "Membership_Payment";
+        public Guid ProductId { get; set; }
     }
 }
